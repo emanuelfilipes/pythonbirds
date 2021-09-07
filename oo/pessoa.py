@@ -3,12 +3,13 @@ class Pessoa:
         self.idade = idade
         self.nome = nome
         self.filhos = list(filhos)
+
     def cumprimentar(self):
         return f'Olá {id(self)}'
 
 if __name__ == '__main__':
-    luciano = Pessoa(nome='Luciano')
-    emanuel = Pessoa(luciano, nome='Emanuel')
+    renzo = Pessoa(nome='Renzo')
+    luciano = Pessoa(renzo, nome='Luciano')
     print(Pessoa.cumprimentar(luciano))
     print(id(luciano))
     print(luciano.cumprimentar()) #se tiver mais um argumento dentro do parenteses da erro pq o p ja foi passado no começo
