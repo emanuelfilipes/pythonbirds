@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 
 import os
 import sys
@@ -50,7 +50,7 @@ class PorcoFake(AtorFake):
 class PassaroFake(AtorFake):
     def __init__(self, x=0, y=0):
         super().__init__(x, y)
-        self._lancado = False
+        self._lancado = False       #saber se o metodo do passaro foi lançado ou n
         self.colidir_com_chao_executado = False
 
     def foi_lancado(self):
@@ -165,14 +165,14 @@ class FaseTestes(TestCase):
                          'Sem porco ativo, o jogo deveria acabar com vitória')
 
     def teste_lancar_passaro_sem_erro_quando_nao_existe_passaro(self):
-        passaros = [PassaroFake(1, 1) for _ in range(2)]
-        fase = Fase()
-        fase.adicionar_passaro(*passaros)
-        self.assertFalse(passaros[0].foi_lancado())
-        self.assertFalse(passaros[1].foi_lancado())
-        fase.lancar(90, 1)
-        fase.lancar(45, 3)
-        fase.lancar(31,
+        passaros = [PassaroFake(1, 1) for _ in range(2)] #inserido dois passaros
+        fase = Fase()                                   #fase criada
+        fase.adicionar_passaro(*passaros)               #adiciona os dois passaros na fase
+        self.assertFalse(passaros[0].foi_lancado())     #certifica que os dois n foram lançados
+        self.assertFalse(passaros[1].foi_lancado())     #certifica que os dois n foram lançados
+        fase.lancar(90, 1)                              #lança o primeiro
+        fase.lancar(45, 3)                              #lança o segundo
+        fase.lancar(31,                                 #evita o erro com uma terceira tentativa que não existe
                     5)  # testando que lançar passaros depios de todos
         # lançados não causa erro
 
